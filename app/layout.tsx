@@ -42,8 +42,7 @@ const personSchema = {
   name: "Arko",
   url: siteUrl,
   jobTitle: "AI Product Engineer & Full-Stack Architect",
-  alumniOf: { "@type": "CollegeOrUniversity", name: "
-  email: "ark@ark.chakrakali.com",
+  email: "contact@ark.chakrakali.com",
   sameAs: ["https://github.com/SA-Ark", "https://www.linkedin.com/in/arkchakrabarti"],
   knowsAbout: [
     "AI product engineering",
