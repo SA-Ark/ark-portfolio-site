@@ -85,7 +85,7 @@ export function HomeClient() {
         >
           <motion.div variants={fadeUp} transition={{ duration: 0.6 }} className="max-w-5xl">
             <Pill>Premium AI product engineering for teams that need outcomes, not experiments</Pill>
-            <h1 className="shimmer-text mt-8 text-6xl font-extrabold leading-[0.92] md:text-8xl lg:text-9xl">Ark Chakrabarti</h1>
+            <h1 className="shimmer-text mt-8 text-6xl font-extrabold leading-[0.92] md:text-8xl lg:text-9xl">Arko</h1>
             <p className="mt-6 text-3xl font-bold leading-tight text-white md:text-5xl">AI Product Engineer &amp; Full-Stack Architect</p>
             <p className="mt-7 max-w-3xl text-xl text-zinc-300 md:text-2xl">
               I build production AI systems that deliver measurable ROI. From rescue to revenue.

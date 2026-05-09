@@ -70,7 +70,7 @@ export function ContactForm() {
       </button>
       {sent ? (
         <div role="status" className="mt-5 rounded-2xl border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-base text-emerald-100">
-          Thanks — your message is ready for follow-up. For urgent projects, email ark@arkdev.io directly.
+          Thanks — your message is ready for follow-up. For urgent projects, email ark@ark.chakrakali.com directly.
         </div>
       ) : null}
     </form>

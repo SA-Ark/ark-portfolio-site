@@ -13,7 +13,7 @@ export function SectionHeader({ eyebrow, title, description }: { eyebrow?: strin
 
 export function Pill({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <span className={`rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-xs font-semibold text-zinc-200 backdrop-blur-xl ${className}`}>
+    <span className={`rounded-full border border-cyan-500/30 bg-cyan-500/15 px-3.5 py-1.5 text-xs font-bold text-cyan-200 backdrop-blur-xl ${className}`}>
       {children}
     </span>
   );
@@ -23,7 +23,7 @@ export function PrimaryLink({ href, children }: { href: string; children: ReactN
   return (
     <Link
       href={href}
-      className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-violet-500 to-cyan-400 px-6 py-3 font-semibold text-white shadow-xl shadow-cyan-500/20 transition hover:-translate-y-1 hover:shadow-violet-500/25"
+      className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 px-8 py-4 text-lg font-bold text-white shadow-2xl shadow-cyan-500/30 transition hover:-translate-y-1 hover:shadow-cyan-400/40 hover:brightness-110"
     >
       {children}
     </Link>
@@ -34,7 +34,7 @@ export function OutlineLink({ href, children }: { href: string; children: ReactN
   return (
     <Link
       href={href}
-      className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-6 py-3 font-semibold text-white backdrop-blur-xl transition hover:-translate-y-1 hover:border-cyan-400/50 hover:bg-white/[0.07]"
+      className="inline-flex items-center justify-center rounded-full border-2 border-white px-8 py-4 text-lg font-bold text-white transition hover:-translate-y-1 hover:bg-white hover:text-[#050510]"
     >
       {children}
     </Link>

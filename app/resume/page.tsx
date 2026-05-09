@@ -45,12 +45,12 @@ export default function ResumePage() {
         <Reveal>
           <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 md:p-10">
             <Pill>Condensed Resume</Pill>
-            <h1 className="mt-6 text-4xl font-bold text-white md:text-5xl">Ark Chakrabarti — AI Product Engineer &amp; Full-Stack Architect</h1>
+            <h1 className="mt-6 text-4xl font-bold text-white md:text-5xl">Arko — AI Product Engineer &amp; Full-Stack Architect</h1>
             <div className="mt-8 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
               <div className="space-y-8">
                 <section>
                   <h2 className="text-2xl font-bold text-white">Profile</h2>
-                  <p className="mt-3 text-base text-zinc-300">UC Berkeley Computer Science graduate and former Scale AI Data Specialist focused on building production AI systems: SaaS platforms, RAG, semantic search, agent workflows, model evaluation, and workflow automation.</p>
+                  <p className="mt-3 text-base text-zinc-300">Production AI Systems graduate and former Scale AI Data Specialist focused on building production AI systems: SaaS platforms, RAG, semantic search, agent workflows, model evaluation, and workflow automation.</p>
                 </section>
                 <section>
                   <h2 className="text-2xl font-bold text-white">Selected Work</h2>
@@ -66,7 +66,7 @@ export default function ResumePage() {
                   <div className="mt-3 space-y-4 text-base text-zinc-300">
                     <p><strong className="text-white">Independent AI Product Engineer:</strong> Production SaaS builds, AI integration, workflow automation, and rescue projects for startups and enterprises.</p>
                     <p><strong className="text-white">Scale AI — AI Data Specialist:</strong> LLM training data quality, evaluation, red-teaming, instruction following, and model behavior analysis.</p>
-                    <p><strong className="text-white">UC Berkeley — Computer Science:</strong> Systems, algorithms, software engineering, and scalable product foundations.</p>
+                    <p><strong className="text-white">Production AI Systems:</strong> Systems, algorithms, software engineering, and scalable product foundations.</p>
                   </div>
                 </section>
               </div>
@@ -83,7 +83,7 @@ export default function ResumePage() {
                 </section>
                 <section className="rounded-3xl border border-white/10 bg-black/25 p-6">
                   <h2 className="text-2xl font-bold text-white">Contact</h2>
-                  <p className="mt-3 text-base text-zinc-300">ark@arkdev.io · github.com/SA-Ark · linkedin.com/in/arkchakrabarti</p>
+                  <p className="mt-3 text-base text-zinc-300">ark@ark.chakrakali.com · github.com/SA-Ark · linkedin.com/in/arkchakrabarti</p>
                 </section>
               </aside>
             </div>

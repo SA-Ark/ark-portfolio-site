@@ -10,23 +10,23 @@ const siteUrl = "https://ark.chakrakali.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Ark Chakrabarti — AI Product Engineer & Full-Stack Architect",
-    template: "%s | Ark Chakrabarti",
+    default: "Arko — AI Product Engineer & Full-Stack Architect",
+    template: "%s | Arko",
   },
   description:
     "Premium AI product engineering, SaaS architecture, production rescue, RAG systems, agents, and workflow automation for startups and enterprises.",
   openGraph: {
-    title: "Ark Chakrabarti — AI Product Engineer & Full-Stack Architect",
+    title: "Arko — AI Product Engineer & Full-Stack Architect",
     description: "Production AI systems that deliver measurable ROI. From rescue to revenue.",
     url: siteUrl,
-    siteName: "Ark Chakrabarti Portfolio",
-    images: [{ url: "/og.svg", width: 1200, height: 630, alt: "Ark Chakrabarti portfolio" }],
+    siteName: "Arko Portfolio",
+    images: [{ url: "/og.svg", width: 1200, height: 630, alt: "Arko portfolio" }],
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ark Chakrabarti — AI Product Engineer & Full-Stack Architect",
+    title: "Arko — AI Product Engineer & Full-Stack Architect",
     description: "Production AI systems that deliver measurable ROI. From rescue to revenue.",
     images: ["/og.svg"],
   },
@@ -39,11 +39,11 @@ export const metadata: Metadata = {
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Ark Chakrabarti",
+  name: "Arko",
   url: siteUrl,
   jobTitle: "AI Product Engineer & Full-Stack Architect",
-  alumniOf: { "@type": "CollegeOrUniversity", name: "University of California, Berkeley" },
-  email: "ark@arkdev.io",
+  alumniOf: { "@type": "CollegeOrUniversity", name: "
+  email: "ark@ark.chakrakali.com",
   sameAs: ["https://github.com/SA-Ark", "https://www.linkedin.com/in/arkchakrabarti"],
   knowsAbout: [
     "AI product engineering",

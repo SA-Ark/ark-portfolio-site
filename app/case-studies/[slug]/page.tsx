@@ -16,14 +16,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: study.title,
     description: `${study.title} for ${study.client}: ${study.description}`,
     openGraph: {
-      title: `${study.title} | Ark Chakrabarti`,
+      title: `${study.title} | Arko`,
       description: study.description,
       url: `/case-studies/${study.slug}`,
       images: [{ url: "/og.svg", width: 1200, height: 630, alt: study.title }],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${study.title} | Ark Chakrabarti`,
+      title: `${study.title} | Arko`,
       description: study.description,
       images: ["/og.svg"],
     },

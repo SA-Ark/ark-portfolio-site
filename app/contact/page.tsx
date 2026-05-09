@@ -7,7 +7,7 @@ import { OutlineLink, Pill } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Contact Ark Chakrabarti to build SaaS, rescue production systems, add AI, orchestrate agents, or automate workflows.",
+  description: "Contact Arko to build SaaS, rescue production systems, add AI, orchestrate agents, or automate workflows.",
 };
 
 export default function ContactPage() {
@@ -20,7 +20,7 @@ export default function ContactPage() {
           <p className="mt-6 text-xl text-zinc-300">Tell me what you&apos;re building, where it hurts, or what needs to become automated. I&apos;ll respond with the fastest path to a useful system.</p>
           <div className="mt-8 space-y-4 rounded-[2rem] border border-white/10 bg-white/[0.04] p-6">
             <div className="flex items-center gap-3 text-base text-zinc-300">
-              <Mail className="h-5 w-5 text-cyan-300" /> Prefer email? <Link href="mailto:ark@arkdev.io" className="font-semibold text-white hover:text-cyan-200">ark@arkdev.io</Link>
+              <Mail className="h-5 w-5 text-cyan-300" /> Prefer email? <Link href="mailto:ark@ark.chakrakali.com" className="font-semibold text-white hover:text-cyan-200">ark@ark.chakrakali.com</Link>
             </div>
             <div>
               <OutlineLink href="https://calendly.com/arkchakrabarti/intro-call">Schedule a call</OutlineLink>

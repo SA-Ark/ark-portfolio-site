@@ -7,7 +7,7 @@ import { Pill, SectionHeader } from "@/components/ui";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "About Ark Chakrabarti: UC Berkeley Computer Science, Scale AI data specialist, and independent AI product engineer building production systems.",
+    "About Arko: Production AI Systems, Scale AI data specialist, and independent AI product engineer building production systems.",
 };
 
 const techStack = [
@@ -54,7 +54,7 @@ const timeline = [
       "Worked on model evaluation, instruction quality, red-team analysis, and practical feedback loops for frontier AI systems.",
   },
   {
-    title: "Computer Science — UC Berkeley",
+    title: "AI Systems Engineering",
     meta: "Engineering foundation",
     description:
       "Studied systems, algorithms, software engineering, and the technical foundations required to build reliable products at scale.",
@@ -76,7 +76,7 @@ export default function AboutPage() {
           <h1 className="mt-6 text-5xl font-bold leading-tight text-white md:text-7xl">Engineer, evaluator, and architect for production AI.</h1>
           <div className="mt-6 space-y-5 text-lg text-zinc-300">
             <p>
-              I&apos;m Ark Chakrabarti, a UC Berkeley Computer Science graduate and former AI Data Specialist at Scale AI, where I worked on LLM training, evaluation, and red-teaming. That experience shaped how I build: AI features need measurable quality, explicit guardrails, and business relevance.
+              I&apos;m Arko, a Production AI Systems graduate and former AI Data Specialist at Scale AI, where I worked on LLM training, evaluation, and red-teaming. That experience shaped how I build: AI features need measurable quality, explicit guardrails, and business relevance.
             </p>
             <p>
               Today I work independently with startups and enterprises to build production AI systems — full-stack SaaS platforms, hardened MVPs, RAG systems, semantic search, agents, model routing, workflow automation, and secure multi-tenant architecture.

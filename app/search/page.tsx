@@ -5,7 +5,7 @@ import { buildSearchIndex } from "@/lib/search-index";
 
 export const metadata: Metadata = {
   title: "Search",
-  description: "Search Ark Chakrabarti case studies, AI services, tech stack, ATS keywords, and production rescue capabilities.",
+  description: "Search Arko case studies, AI services, tech stack, ATS keywords, and production rescue capabilities.",
 };
 
 export default function SearchPage() {
