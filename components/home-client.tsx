@@ -162,7 +162,7 @@ function CodeSnippet() {
 
 function CaseStudyMockup({ slug }: { slug: string }) {
   return (
-    <div className="relative aspect-video w-full overflow-hidden rounded-t-[20px] bg-[#0a0a1a]">
+    <div className="relative w-full overflow-hidden rounded-t-[20px] bg-[#0a0a1a]" style={{ aspectRatio: "16/10.5" }}>
       <video
         src={`/videos/${slug}.mp4`}
         autoPlay
@@ -294,7 +294,7 @@ export function HomeClient() {
               transition={{ type: "spring", stiffness: 80, damping: 16 }}
               className="group glass-card gradient-border h-full overflow-hidden rounded-[2rem]"
             >
-              <div className={`relative bg-gradient-to-br ${study.palette} p-5`}>
+              <div className={`relative bg-gradient-to-br ${study.palette} p-6`}>
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_35%_20%,rgba(255,255,255,0.18),transparent_24%),linear-gradient(to_bottom,transparent,rgba(5,5,16,0.75))]" />
                 <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-black/25 shadow-2xl shadow-black/30 backdrop-blur-sm">
                   <div className="flex items-center gap-2 border-b border-white/10 bg-black/30 px-4 py-3">
