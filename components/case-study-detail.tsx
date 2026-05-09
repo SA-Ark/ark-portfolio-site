@@ -132,8 +132,8 @@ function ChallengeAccordion({ study }: { study: CaseStudy }) {
                     <p className="text-sm font-semibold uppercase tracking-[0.18em] text-red-300">Impact</p>
                     <p className="mt-3 text-base text-zinc-300">{item.impact}</p>
                   </div>
-                  <div className="rounded-2xl border border-blue-400/20 bg-blue-500/[0.06] p-5">
-                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-300">Solution</p>
+                  <div className="rounded-2xl border border-cyan-400/20 bg-cyan-500/[0.06] p-5">
+                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300">Solution</p>
                     <p className="mt-3 text-base text-zinc-300">{item.solution}</p>
                   </div>
                   <div className="rounded-2xl border border-emerald-400/20 bg-emerald-500/[0.06] p-5">
@@ -156,8 +156,8 @@ function AiFlipCards({ study }: { study: CaseStudy }) {
       {study.aiFeatures.map((feature) => (
         <motion.div key={feature.feature} variants={fadeUp} className="group min-h-80 perspective-card">
           <div className="relative h-full min-h-80 rounded-[1.75rem] transition-transform duration-500 preserve-3d group-hover:rotate-y-180">
-            <div className="absolute inset-0 rounded-[1.75rem] border border-blue-400/20 bg-blue-500/[0.06] p-6 backface-hidden">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-200">Business impact</p>
+            <div className="absolute inset-0 rounded-[1.75rem] border border-cyan-400/20 bg-cyan-500/[0.06] p-6 backface-hidden">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-200">Business impact</p>
               <h3 className="mt-4 text-3xl font-bold text-white">{feature.feature}</h3>
               <p className="mt-5 text-base text-zinc-300">{feature.business}</p>
               <p className="mt-6 rounded-2xl border border-emerald-400/20 bg-emerald-500/[0.06] p-4 text-base font-semibold text-emerald-100">{feature.impact}</p>
@@ -278,7 +278,7 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
           variants={stagger}
         >
           <motion.div variants={fadeUp}>
-            <Link href="/#case-studies" className="mb-8 inline-flex items-center gap-2 text-base font-semibold text-blue-200 hover:text-white">
+            <Link href="/#case-studies" className="mb-8 inline-flex items-center gap-2 text-base font-semibold text-cyan-200 hover:text-white">
               ← Back to case studies
             </Link>
             <div className="flex flex-wrap items-center gap-3">
@@ -325,7 +325,7 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
           <Section id="challenge" title="The Challenge">
             <motion.div variants={stagger} className="space-y-6 text-lg text-zinc-300">
               {study.challenge.map((paragraph) => <motion.p variants={fadeUp} key={paragraph}>{paragraph}</motion.p>)}
-              <motion.p variants={fadeUp} className="rounded-[1.5rem] border border-blue-400/20 bg-blue-500/[0.055] p-6 text-base text-zinc-200">
+              <motion.p variants={fadeUp} className="rounded-[1.5rem] border border-cyan-400/20 bg-cyan-500/[0.055] p-6 text-base text-zinc-200">
                 {atsNarrative}
               </motion.p>
             </motion.div>
@@ -354,7 +354,7 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
               {study.phases.map((phase, index) => (
                 <motion.div key={phase.title} variants={fadeUp} className="relative rounded-[1.75rem] border border-white/10 bg-white/[0.045] p-6">
                   <motion.div
-                    className="absolute -left-10 top-7 flex h-7 w-7 items-center justify-center rounded-full border border-blue-300/50 bg-[#0a0a0a] text-xs font-bold text-blue-200"
+                    className="absolute -left-10 top-7 flex h-7 w-7 items-center justify-center rounded-full border border-blue-300/50 bg-[#0a0a0a] text-xs font-bold text-cyan-200"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
@@ -383,7 +383,7 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
 
           <Section id="architecture" title="Architecture Diagram">
             <ArchitectureDiagram />
-            <motion.pre variants={fadeUp} className="no-scrollbar mt-6 overflow-x-auto rounded-3xl border border-white/10 bg-black/50 p-6 text-base leading-relaxed text-blue-100"><code>{study.architecture}</code></motion.pre>
+            <motion.pre variants={fadeUp} className="no-scrollbar mt-6 overflow-x-auto rounded-3xl border border-white/10 bg-black/50 p-6 text-base leading-relaxed text-cyan-100"><code>{study.architecture}</code></motion.pre>
           </Section>
 
           <Section id="stack" title="Tech Stack Footer">

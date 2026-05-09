@@ -1,13 +1,22 @@
 @import "tailwindcss";
 
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
 :root {
-  --background: #0a0a0a;
-  --foreground: #fafafa;
-  --muted: #a1a1aa;
-  --border: rgba(255, 255, 255, 0.12);
-  --card: rgba(255, 255, 255, 0.055);
-  --blue: #3b82f6;
-  --purple: #8b5cf6;
+  --background: #050510;
+  --surface: #0f0f1a;
+  --foreground: #e8e8ed;
+  --muted: #8888a0;
+  --border: rgba(255, 255, 255, 0.06);
+  --card: rgba(255, 255, 255, 0.04);
+  --cyan: #00d4ff;
+  --violet: #7c3aed;
+  --mx: 50vw;
+  --my: 35vh;
 }
 
 * {
@@ -20,6 +29,7 @@ html {
 }
 
 body {
+  min-height: 100vh;
   margin: 0;
   background: var(--background);
   color: var(--foreground);
@@ -28,6 +38,20 @@ body {
   line-height: 1.6;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  left: var(--mx);
+  top: var(--my);
+  z-index: 9999;
+  width: 600px;
+  height: 600px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.12), transparent 70%);
+  mix-blend-mode: screen;
 }
 
 h1,
@@ -41,40 +65,104 @@ h6 {
 }
 
 ::selection {
-  background: rgba(139, 92, 246, 0.45);
+  background: rgba(0, 212, 255, 0.35);
   color: #ffffff;
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, var(--blue), var(--purple));
+.aurora-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  background: #050510;
+}
+
+.aurora-bg::before,
+.aurora-bg::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    transparent 0deg,
+    #7c3aed22 60deg,
+    transparent 120deg,
+    #00d4ff22 180deg,
+    transparent 240deg,
+    #7c3aed22 300deg,
+    transparent 360deg
+  );
+  filter: blur(80px);
+  animation: aurora-rotate 20s linear infinite;
+}
+
+.aurora-bg::after {
+  animation-duration: 15s;
+  animation-direction: reverse;
+}
+
+.noise::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.gradient-text,
+.shimmer-text {
+  background: linear-gradient(90deg, #7c3aed 0%, #00d4ff 25%, #7c3aed 50%, #ec4899 75%, #7c3aed 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+.glass-card {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease, background 300ms ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.1);
+  transform: translateY(-4px);
 }
 
 .gradient-border {
   position: relative;
-  background: linear-gradient(var(--background), var(--background)) padding-box,
-    linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(139, 92, 246, 0.8)) border-box;
-  border: 1px solid transparent;
+  border-radius: 20px;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from var(--angle), #7c3aed, #00d4ff, #ec4899, #7c3aed);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: rotate-border 4s linear infinite;
 }
 
 .mesh-bg {
   background:
-    radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.22), transparent 32%),
-    radial-gradient(circle at 82% 18%, rgba(139, 92, 246, 0.2), transparent 28%),
-    radial-gradient(circle at 50% 82%, rgba(59, 130, 246, 0.1), transparent 30%),
-    #0a0a0a;
+    radial-gradient(circle at 15% 20%, rgba(124, 58, 237, 0.28), transparent 32%),
+    radial-gradient(circle at 82% 18%, rgba(0, 212, 255, 0.22), transparent 28%),
+    radial-gradient(circle at 50% 82%, rgba(236, 72, 153, 0.11), transparent 30%),
+    #050510;
   animation: mesh-shift 18s ease-in-out infinite alternate;
-}
-
-@keyframes mesh-shift {
-  from {
-    background-position: 0 0, 0 0, 0 0;
-  }
-  to {
-    background-position: 48px -36px, -42px 52px, 30px 36px;
-  }
 }
 
 .reveal {
@@ -90,17 +178,6 @@ h6 {
 
 .page-shell {
   animation: page-enter 420ms ease both;
-}
-
-@keyframes page-enter {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .perspective-card {
@@ -120,6 +197,15 @@ h6 {
   transform: rotateY(180deg);
 }
 
+.tilt-3d {
+  transform-style: preserve-3d;
+  transition: transform 350ms ease, border-color 350ms ease, box-shadow 350ms ease;
+}
+
+.tilt-3d:hover {
+  transform: perspective(900px) rotateX(4deg) rotateY(-5deg) translateY(-6px);
+}
+
 .tech-marquee {
   width: max-content;
   animation: tech-marquee 34s linear infinite;
@@ -129,15 +215,6 @@ h6 {
   animation-play-state: paused;
 }
 
-@keyframes tech-marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -145,4 +222,51 @@ h6 {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+@keyframes aurora-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes rotate-border {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@keyframes mesh-shift {
+  from {
+    background-position: 0 0, 0 0, 0 0;
+  }
+  to {
+    background-position: 48px -36px, -42px 52px, 30px 36px;
+  }
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tech-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }

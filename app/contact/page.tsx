@@ -20,16 +20,16 @@ export default function ContactPage() {
           <p className="mt-6 text-xl text-zinc-300">Tell me what you&apos;re building, where it hurts, or what needs to become automated. I&apos;ll respond with the fastest path to a useful system.</p>
           <div className="mt-8 space-y-4 rounded-[2rem] border border-white/10 bg-white/[0.04] p-6">
             <div className="flex items-center gap-3 text-base text-zinc-300">
-              <Mail className="h-5 w-5 text-blue-300" /> Prefer email? <Link href="mailto:ark@arkdev.io" className="font-semibold text-white hover:text-blue-200">ark@arkdev.io</Link>
+              <Mail className="h-5 w-5 text-cyan-300" /> Prefer email? <Link href="mailto:ark@arkdev.io" className="font-semibold text-white hover:text-cyan-200">ark@arkdev.io</Link>
             </div>
             <div>
               <OutlineLink href="https://calendly.com/arkchakrabarti/intro-call">Schedule a call</OutlineLink>
             </div>
           </div>
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link aria-label="GitHub" href="https://github.com/SA-Ark" className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 font-semibold text-white transition hover:border-blue-400/50"><Github className="h-5 w-5" /> GitHub</Link>
-            <Link aria-label="LinkedIn" href="https://www.linkedin.com/in/arkchakrabarti" className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 font-semibold text-white transition hover:border-blue-400/50"><Linkedin className="h-5 w-5" /> LinkedIn</Link>
-            <Link aria-label="Twitter/X" href="https://x.com/arkchakrabarti" className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 font-semibold text-white transition hover:border-blue-400/50"><Twitter className="h-5 w-5" /> Twitter/X</Link>
+            <Link aria-label="GitHub" href="https://github.com/SA-Ark" className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 font-semibold text-white transition hover:border-cyan-400/50"><Github className="h-5 w-5" /> GitHub</Link>
+            <Link aria-label="LinkedIn" href="https://www.linkedin.com/in/arkchakrabarti" className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 font-semibold text-white transition hover:border-cyan-400/50"><Linkedin className="h-5 w-5" /> LinkedIn</Link>
+            <Link aria-label="Twitter/X" href="https://x.com/arkchakrabarti" className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 font-semibold text-white transition hover:border-cyan-400/50"><Twitter className="h-5 w-5" /> Twitter/X</Link>
           </div>
         </Reveal>
         <Reveal delay={120}>

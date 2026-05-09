@@ -66,7 +66,7 @@ function Highlight({ text, query }: { text: string; query: string }) {
       {parts.map((part, index) => {
         const match = terms.some((term) => part.toLowerCase() === term.toLowerCase());
         return match ? (
-          <mark key={`${part}-${index}`} className="rounded bg-blue-400/25 px-1 text-blue-100">
+          <mark key={`${part}-${index}`} className="rounded bg-blue-400/25 px-1 text-cyan-100">
             {part}
           </mark>
         ) : (
@@ -87,7 +87,7 @@ export function SearchClient({ items }: { items: SearchItem[] }) {
   return (
     <div className="mx-auto max-w-[1200px] px-5 py-16 md:py-24 lg:px-8">
       <div className="mx-auto max-w-3xl text-center">
-        <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.055] text-blue-200">
+        <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.055] text-cyan-200">
           <Sparkles className="h-7 w-7" />
         </div>
         <h1 className="text-5xl font-bold text-white md:text-7xl">Search the portfolio</h1>
@@ -114,7 +114,7 @@ export function SearchClient({ items }: { items: SearchItem[] }) {
           <button
             key={example}
             type="button"
-            className="rounded-full border border-white/10 bg-white/[0.045] px-4 py-2 text-sm font-semibold text-zinc-300 transition hover:border-blue-400/40 hover:text-white"
+            className="rounded-full border border-white/10 bg-white/[0.045] px-4 py-2 text-sm font-semibold text-zinc-300 transition hover:border-cyan-400/40 hover:text-white"
             onClick={() => setQuery(example)}
           >
             {example}
@@ -125,7 +125,7 @@ export function SearchClient({ items }: { items: SearchItem[] }) {
       <div className="mt-14">
         <div className="mb-6 flex items-end justify-between gap-4">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">Results</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">Results</p>
             <h2 className="mt-2 text-3xl font-bold text-white">
               {query ? `${results.length} matches for “${query}”` : "Start typing to search"}
             </h2>
@@ -143,15 +143,15 @@ export function SearchClient({ items }: { items: SearchItem[] }) {
             <Link
               key={result.id}
               href={result.href}
-              className="group rounded-[1.75rem] border border-white/10 bg-white/[0.045] p-6 transition duration-300 hover:-translate-y-1 hover:border-blue-400/40 hover:bg-white/[0.07]"
+              className="group rounded-[1.75rem] border border-white/10 bg-white/[0.045] p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-white/[0.07]"
             >
               <div className="flex items-center justify-between gap-4">
-                <span className="rounded-full border border-white/10 bg-black/35 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-blue-200">
+                <span className="rounded-full border border-white/10 bg-black/35 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-cyan-200">
                   {result.type.replace("-", " ")}
                 </span>
                 <span className="text-sm font-semibold text-zinc-500">Score {result.score}</span>
               </div>
-              <h3 className="mt-5 text-2xl font-bold text-white group-hover:text-blue-100">
+              <h3 className="mt-5 text-2xl font-bold text-white group-hover:text-cyan-100">
                 <Highlight text={result.title} query={query} />
               </h3>
               <p className="mt-3 text-base text-zinc-300">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { CursorGlow } from "@/components/cursor-glow";
 import { Footer } from "@/components/footer";
 import { Nav } from "@/components/nav";
 import "./globals.css";
@@ -57,10 +58,12 @@ const personSchema = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>
+      <body className="noise bg-[#050510] text-[#e8e8ed]">
         <Script id="person-schema" type="application/ld+json" strategy="beforeInteractive">
           {JSON.stringify(personSchema)}
         </Script>
+        <div className="aurora-bg" aria-hidden="true" />
+        <CursorGlow />
         <Nav />
         <main className="page-shell min-h-screen pt-24">{children}</main>
         <Footer />

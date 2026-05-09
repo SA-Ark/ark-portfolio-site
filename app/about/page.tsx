@@ -66,7 +66,7 @@ export default function AboutPage() {
     <div className="mx-auto max-w-[1200px] px-5 py-16 md:py-24 lg:px-8">
       <section className="grid gap-10 md:grid-cols-[360px_1fr] md:items-center">
         <Reveal>
-          <div className="relative mx-auto h-72 w-72 overflow-hidden rounded-[3rem] border border-white/10 bg-gradient-to-br from-blue-500 via-purple-500 to-slate-900 shadow-2xl shadow-blue-950/40 md:h-80 md:w-80">
+          <div className="relative mx-auto h-72 w-72 overflow-hidden rounded-[3rem] border border-white/10 bg-gradient-to-br from-blue-500 via-purple-500 to-slate-900 shadow-2xl shadow-cyan-950/40 md:h-80 md:w-80">
             <div className="absolute inset-6 rounded-[2.5rem] border border-white/20 bg-black/20 backdrop-blur-sm" />
             <div className="absolute inset-0 flex items-center justify-center text-7xl font-bold text-white/90">ARK</div>
           </div>
@@ -83,10 +83,10 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="mt-7 flex flex-wrap gap-3">
-            <Link href="https://github.com/SA-Ark" className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 font-semibold text-white transition hover:border-blue-400/50">
+            <Link href="https://github.com/SA-Ark" className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 font-semibold text-white transition hover:border-cyan-400/50">
               <Github className="h-5 w-5" /> SA-Ark
             </Link>
-            <Link href="https://www.linkedin.com/in/arkchakrabarti" className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 font-semibold text-white transition hover:border-blue-400/50">
+            <Link href="https://www.linkedin.com/in/arkchakrabarti" className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 font-semibold text-white transition hover:border-cyan-400/50">
               <Linkedin className="h-5 w-5" /> /in/arkchakrabarti
             </Link>
           </div>
@@ -98,7 +98,7 @@ export default function AboutPage() {
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {techStack.map((group, index) => (
             <Reveal key={group.category} delay={(index % 3) * 90}>
-              <div className="h-full rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-6 transition hover:-translate-y-1 hover:border-blue-400/40 hover:shadow-2xl hover:shadow-blue-950/40">
+              <div className="h-full rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-6 transition hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-2xl hover:shadow-cyan-950/40">
                 <h2 className="text-2xl font-bold text-white">{group.category}</h2>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {group.items.map((item) => <Pill key={item}>{item}</Pill>)}
@@ -115,10 +115,10 @@ export default function AboutPage() {
           {timeline.map((item, index) => (
             <Reveal key={item.title} delay={index * 100}>
               <div className="relative border-l border-white/10 pb-10 pl-8 last:pb-0">
-                <div className="absolute -left-5 top-0 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-[#0a0a0a] text-blue-200">
+                <div className="absolute -left-5 top-0 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-[#0a0a0a] text-cyan-200">
                   {index === 0 ? <Sparkles className="h-5 w-5" /> : index === 1 ? <ShieldCheck className="h-5 w-5" /> : <GraduationCap className="h-5 w-5" />}
                 </div>
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">{item.meta}</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">{item.meta}</p>
                 <h3 className="mt-2 text-2xl font-bold text-white">{item.title}</h3>
                 <p className="mt-3 text-base text-zinc-400">{item.description}</p>
               </div>

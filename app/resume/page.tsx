@@ -27,13 +27,13 @@ export default function ResumePage() {
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {variants.map((variant, index) => (
           <Reveal key={variant.title} delay={(index % 3) * 90}>
-            <article className="flex h-full flex-col rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-6 transition hover:-translate-y-1 hover:border-blue-400/40 hover:shadow-2xl hover:shadow-blue-950/40">
-              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 text-blue-200 ring-1 ring-white/10">
+            <article className="flex h-full flex-col rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-6 transition hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-2xl hover:shadow-cyan-950/40">
+              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500/20 to-cyan-400/20 text-cyan-200 ring-1 ring-white/10">
                 <FileText className="h-6 w-6" />
               </div>
               <h2 className="text-2xl font-bold text-white">{variant.title}</h2>
               <p className="mt-3 flex-1 text-base text-zinc-400">{variant.subtitle}</p>
-              <Link href={variant.href} className="mt-6 inline-flex items-center justify-center gap-2 rounded-full border border-white/10 px-5 py-3 font-semibold text-white transition hover:border-blue-400/50 hover:bg-white/[0.06]">
+              <Link href={variant.href} className="mt-6 inline-flex items-center justify-center gap-2 rounded-full border border-white/10 px-5 py-3 font-semibold text-white transition hover:border-cyan-400/50 hover:bg-white/[0.06]">
                 <Download className="h-5 w-5" /> Download PDF
               </Link>
             </article>

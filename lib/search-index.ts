@@ -137,7 +137,7 @@ export function buildSearchIndex(): SearchItem[] {
     type: "keyword",
     title: keyword,
     description: `${keyword} appears in Ark's production AI, full-stack architecture, rescue, orchestration, and automation work across case studies and services.`,
-    href: "/#case-studies",
+    href: `/search?q=${encodeURIComponent(keyword)}`,
     tags: ["ATS keyword", "capability"],
     body: keyword,
   }));

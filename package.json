@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.17",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.9.1",
     "framer-motion": "^12.38.0",
     "lucide-react": "^0.468.0",
     "next": "^16.0.0",
