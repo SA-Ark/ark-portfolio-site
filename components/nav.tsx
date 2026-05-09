@@ -64,7 +64,7 @@ export function Nav() {
             <input
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search RAG, Rust…"
+              placeholder="What do you need?"
               className="w-36 bg-transparent text-base text-white outline-none placeholder:text-zinc-600"
             />
           </form>

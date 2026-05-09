@@ -82,7 +82,7 @@ export function SearchClient({ items }: { items: SearchItem[] }) {
   const initialQuery = params.get("q") ?? "";
   const [query, setQuery] = useState(initialQuery);
   const results = useMemo(() => rank(items, query), [items, query]);
-  const examples = ["RAG", "multi-tenant", "Rust", "vibe code", "orchestration", "healthcare", "fintech", "LangChain", "production rescue"];
+  const examples = ["fix my app", "build a SaaS", "AI for my product", "rescue broken code", "reduce AI costs", "automate workflows", "scale my startup", "production ready", "hire AI developer"];
 
   return (
     <div className="mx-auto max-w-[1200px] px-5 py-16 md:py-24 lg:px-8">
@@ -102,7 +102,7 @@ export function SearchClient({ items }: { items: SearchItem[] }) {
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Try RAG, multi-tenant, Rust, vibe code, LangChain…"
+            placeholder="What do you need built?"
             className="w-full bg-transparent text-base text-white outline-none placeholder:text-zinc-600"
             autoFocus
           />

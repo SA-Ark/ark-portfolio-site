@@ -126,39 +126,30 @@ function CodeSnippet() {
 }
 
 function CaseStudyMockup({ slug }: { slug: string }) {
-  if (slug === "ecommerce") {
-    return (
-      <div className="grid h-full grid-cols-[0.8fr_1.2fr] gap-3 p-4">
-        <div className="space-y-3 rounded-2xl bg-white/10 p-3"><div className="h-20 rounded-xl bg-cyan-300/30" /><div className="h-3 rounded bg-white/30" /><div className="h-3 w-2/3 rounded bg-white/20" /><div className="mt-4 h-9 rounded-full bg-emerald-300/50" /></div>
-        <div className="grid grid-cols-2 gap-3">{[0, 1, 2, 3].map((item) => <div key={item} className="rounded-2xl bg-black/25 p-3"><div className="h-16 rounded-xl bg-white/15" /><div className="mt-3 h-2 rounded bg-white/30" /><div className="mt-2 h-2 w-1/2 rounded bg-cyan-300/40" /></div>)}</div>
-      </div>
-    );
-  }
-  if (slug === "portal") {
-    return (
-      <div className="grid h-full grid-cols-[0.45fr_1fr] gap-3 p-4">
-        <div className="space-y-3 rounded-2xl bg-black/25 p-3">{[0, 1, 2, 3, 4].map((item) => <div key={item} className="h-7 rounded-xl bg-white/15" />)}</div>
-        <div className="space-y-3"><div className="grid grid-cols-3 gap-3">{[0, 1, 2].map((item) => <div key={item} className="h-16 rounded-2xl bg-cyan-300/20" />)}</div><div className="h-28 rounded-2xl bg-white/10" /><div className="h-12 rounded-2xl bg-emerald-300/20" /></div>
-      </div>
-    );
-  }
-  if (slug === "learn") {
-    return (
-      <div className="grid h-full grid-cols-[1fr_0.7fr] gap-3 p-4"><div className="space-y-3 rounded-2xl bg-black/25 p-4"><div className="h-5 w-3/5 rounded bg-white/30" /><div className="h-24 rounded-2xl bg-cyan-300/20" /><div className="grid grid-cols-3 gap-2">{[0, 1, 2].map((item) => <div key={item} className="h-14 rounded-xl bg-violet-300/20" />)}</div></div><div className="rounded-2xl bg-white/10 p-3"><div className="mx-auto h-24 w-24 rounded-full border-8 border-emerald-300/50" /><div className="mt-5 space-y-2">{[0, 1, 2].map((item) => <div key={item} className="h-3 rounded bg-white/20" />)}</div></div></div>
-    );
-  }
-  if (slug === "calendar") {
-    return (
-      <div className="grid h-full grid-cols-5 gap-2 p-4">{[0, 1, 2, 3, 4].map((day) => <div key={day} className="rounded-2xl bg-black/20 p-2"><div className="mb-3 h-3 rounded bg-white/20" />{[0, 1, 2].map((item) => <div key={item} className={`mb-2 rounded-lg ${item === 1 ? "h-16 bg-cyan-300/25" : "h-9 bg-white/12"}`} />)}</div>)}</div>
-    );
-  }
-  if (slug === "markets") {
-    return (
-      <div className="grid h-full grid-cols-[1fr_0.8fr] gap-3 p-4"><div className="rounded-2xl bg-black/25 p-4"><svg viewBox="0 0 220 130" className="h-full w-full"><polyline points="0,95 28,82 55,88 82,42 110,52 138,25 170,48 205,18" fill="none" stroke="#22c55e" strokeWidth="6" strokeLinecap="round" /><polyline points="0,112 220,112" stroke="rgba(255,255,255,0.15)" /></svg></div><div className="space-y-3">{[0, 1, 2].map((item) => <div key={item} className="rounded-2xl bg-white/10 p-3"><div className="h-3 rounded bg-white/25" /><div className="mt-3 h-8 rounded-xl bg-emerald-300/20" /></div>)}</div></div>
-    );
-  }
+  const urls: Record<string, string> = {
+    ecommerce: "https://ecommerce.chakrakali.com",
+    portal: "https://portal.chakrakali.com",
+    learn: "https://learn.chakrakali.com",
+    calendar: "https://calendar.chakrakali.com",
+    markets: "https://markets.chakrakali.com",
+    legal: "https://legal.chakrakali.com",
+  };
+  const url = urls[slug];
   return (
-    <div className="grid h-full grid-cols-[0.8fr_1fr] gap-3 p-4"><div className="space-y-3 rounded-2xl bg-black/25 p-3">{[0, 1, 2, 3].map((item) => <div key={item} className="h-10 rounded-xl bg-violet-300/20" />)}</div><div className="rounded-2xl bg-white/10 p-4"><div className="h-16 rounded-2xl bg-cyan-300/20" /><div className="mt-4 space-y-2">{[0, 1, 2, 3].map((item) => <div key={item} className="h-3 rounded bg-white/20" />)}</div><div className="mt-5 h-10 rounded-full bg-emerald-300/30" /></div></div>
+    <div className="relative h-52 overflow-hidden rounded-t-[20px] bg-[#0a0a1a]">
+      {url ? (
+        <iframe
+          src={url}
+          title={slug}
+          className="pointer-events-none absolute left-0 top-0 h-[900px] w-[1440px] origin-top-left scale-[0.25] border-0"
+          loading="lazy"
+          sandbox="allow-scripts allow-same-origin"
+        />
+      ) : (
+        <div className="flex h-full items-center justify-center text-zinc-600">Preview</div>
+      )}
+      <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#0f0f1a] to-transparent" />
+    </div>
   );
 }
 
@@ -308,10 +299,10 @@ export function HomeClient() {
                   ))}
                 </div>
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <Link href={`/case-studies/${study.slug}`} className="inline-flex items-center gap-2 font-semibold text-cyan-300 transition hover:text-cyan-100">
+                  <Link href={`/case-studies/${study.slug}`} className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-cyan-500/20 transition hover:-translate-y-0.5 hover:shadow-cyan-400/30 hover:brightness-110">
                     View Case Study <ArrowRight className="h-4 w-4" />
                   </Link>
-                  <Link href={study.liveUrl} className="inline-flex items-center gap-2 font-semibold text-white transition hover:text-violet-200">
+                  <Link href={study.liveUrl} className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/80 px-5 py-2.5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-white hover:text-[#050510]">
                     Live Demo <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
