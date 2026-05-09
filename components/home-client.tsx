@@ -84,9 +84,44 @@ const container = {
   show: { transition: { staggerChildren: 0.1 } },
 };
 
+const staggerSlow = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.18 } },
+};
+
+const staggerFast = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.06 } },
+};
+
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   show: { opacity: 1, y: 0 },
+};
+
+const fadeLeft = {
+  hidden: { opacity: 0, x: -60 },
+  show: { opacity: 1, x: 0 },
+};
+
+const fadeRight = {
+  hidden: { opacity: 0, x: 60 },
+  show: { opacity: 1, x: 0 },
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.85 },
+  show: { opacity: 1, scale: 1 },
+};
+
+const flipIn = {
+  hidden: { opacity: 0, rotateX: 45, y: 30 },
+  show: { opacity: 1, rotateX: 0, y: 0 },
+};
+
+const blurIn = {
+  hidden: { opacity: 0, filter: "blur(12px)", y: 20 },
+  show: { opacity: 1, filter: "blur(0px)", y: 0 },
 };
 
 const codeLines = [
@@ -182,12 +217,12 @@ export function HomeClient() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
-          variants={container}
+          variants={staggerSlow}
         >
-          {services.map((service) => {
+          {services.map((service, i) => {
             const Icon = service.icon;
             return (
-              <motion.div key={service.title} variants={fadeUp} transition={{ type: "spring", stiffness: 100, damping: 15 }} className="h-full">
+              <motion.div key={service.title} variants={i % 2 === 0 ? fadeLeft : fadeRight} transition={{ type: "spring", stiffness: 80, damping: 18 }} className="h-full">
                 <div className="glass-card gradient-border tilt-3d h-full p-6">
                   <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500/25 to-cyan-400/25 text-cyan-200 ring-1 ring-white/10">
                     <Icon className="h-6 w-6" />
@@ -205,11 +240,11 @@ export function HomeClient() {
         <SectionHeader eyebrow="How I Work" title="A clear path from ambiguity to production" description="Every engagement moves through the same disciplined loop: discover, architect, build, deploy." />
         <div className="relative">
           <motion.div className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-cyan-400 via-violet-400 to-transparent md:left-[12.5%] md:top-12 md:h-px md:w-[75%]" initial={{ scaleY: 0, scaleX: 0 }} whileInView={{ scaleY: 1, scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 1.1, ease: "easeOut" }} />
-          <motion.div className="relative grid gap-6 md:grid-cols-4" initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }} variants={container}>
+          <motion.div className="relative grid gap-6 md:grid-cols-4" initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }} variants={staggerSlow}>
             {processSteps.map((step, index) => {
               const Icon = step.icon;
               return (
-                <motion.div key={step.title} variants={fadeUp} transition={{ duration: 0.6, delay: index * 0.05 }} className="glass-card relative ml-14 p-6 md:ml-0 md:text-center">
+                <motion.div key={step.title} variants={flipIn} transition={{ duration: 0.7, delay: index * 0.08 }} style={{ perspective: 800 }} className="glass-card relative ml-14 p-6 md:ml-0 md:text-center">
                   <div className="absolute -left-14 top-6 flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-400/35 bg-[#050510] text-cyan-200 shadow-[0_0_30px_rgba(0,212,255,0.18)] md:relative md:left-auto md:top-auto md:mx-auto md:mb-6">
                     <Icon className="h-6 w-6" />
                   </div>
@@ -231,8 +266,8 @@ export function HomeClient() {
           viewport={{ once: true }}
           variants={container}
         >
-          {metrics.map((metric) => (
-            <motion.div key={metric} variants={fadeUp} className="glass-card rounded-2xl px-5 py-5 text-center text-lg font-semibold text-white">
+          {metrics.map((metric, i) => (
+            <motion.div key={metric} variants={i % 2 === 0 ? fadeLeft : fadeRight} className="glass-card rounded-2xl px-5 py-5 text-center text-lg font-semibold text-white">
               {metric}
             </motion.div>
           ))}
@@ -250,13 +285,13 @@ export function HomeClient() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
-          variants={container}
+          variants={staggerSlow}
         >
-          {caseStudies.map((study) => (
+          {caseStudies.map((study, i) => (
             <motion.article
               key={study.slug}
-              variants={fadeUp}
-              transition={{ type: "spring", stiffness: 100, damping: 15 }}
+              variants={i % 2 === 0 ? scaleIn : fadeRight}
+              transition={{ type: "spring", stiffness: 80, damping: 16 }}
               className="group glass-card gradient-border h-full overflow-hidden rounded-[2rem]"
             >
               <div className={`relative h-72 bg-gradient-to-br ${study.palette} p-5`}>
@@ -302,9 +337,9 @@ export function HomeClient() {
 
       <section id="testimonials" className="mx-auto max-w-[1200px] px-5 pb-20 md:pb-28 lg:px-8">
         <SectionHeader eyebrow="Testimonials" title="Client words from finished systems" description="Fictionalized testimonials from the portfolio case-study clients, focused on measurable outcomes." />
-        <motion.div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3" initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }} variants={container}>
+        <motion.div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3" initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }} variants={staggerFast}>
           {testimonials.map((item) => (
-            <motion.div key={item.client} variants={fadeUp} className="glass-card gradient-border h-full p-6">
+            <motion.div key={item.client} variants={blurIn} transition={{ duration: 0.6 }} className="glass-card gradient-border h-full p-6">
               <div className="mb-5 flex gap-1 text-amber-300" aria-label="5 star rating">
                 {[0, 1, 2, 3, 4].map((star) => <Star key={star} className="h-5 w-5 fill-current" />)}
               </div>
