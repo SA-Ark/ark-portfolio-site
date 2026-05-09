@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { caseStudies } from "@/lib/case-studies";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://ark.chakrakali.com";
   const now = new Date();

@@ -58,7 +58,7 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "ecommerce-rescue-ai",
+    slug: "ecommerce",
     title: "Production Rescue: Online Retail Platform",
     shortTitle: "E-Commerce Rescue + AI",
     client: "Online Retailer",
@@ -161,7 +161,7 @@ export const caseStudies: CaseStudy[] = [
     stackSummary: "Next.js 16 · TypeScript · PostgreSQL · pgvector · Anthropic Claude · Stripe · Tailwind CSS"
   },
   {
-    slug: "enterprise-client-portal",
+    slug: "portal",
     title: "Multi-Tenant Client Management Platform",
     shortTitle: "Enterprise Client Portal",
     client: "NovaBridge Technologies",
@@ -264,7 +264,7 @@ export const caseStudies: CaseStudy[] = [
     stackSummary: "Next.js 16 · TypeScript · PostgreSQL · Redis · WebSocket · RBAC · Anthropic Claude"
   },
   {
-    slug: "adaptive-learning-platform",
+    slug: "learn",
     title: "AI-Powered Education at Scale",
     shortTitle: "Adaptive Learning Platform",
     client: "Beacon Learning",
@@ -367,7 +367,7 @@ export const caseStudies: CaseStudy[] = [
     stackSummary: "Next.js 16 · TypeScript · FastAPI · PostgreSQL · Embeddings · Anthropic Claude · Learning Analytics"
   },
   {
-    slug: "smart-calendar-daily-brief",
+    slug: "calendar",
     title: "Business Automation Suite",
     shortTitle: "Smart Calendar & Daily Brief",
     client: "Meridian Consulting",
@@ -470,7 +470,7 @@ export const caseStudies: CaseStudy[] = [
     stackSummary: "Next.js 16 · TypeScript · PostgreSQL · Calendar APIs · Anthropic Claude · Scheduled Jobs · Email Automation"
   },
   {
-    slug: "trading-market-intelligence",
+    slug: "markets",
     title: "Institutional-Grade Research Tools",
     shortTitle: "Trading & Market Intelligence",
     client: "Vaulted Financial",
@@ -573,7 +573,7 @@ export const caseStudies: CaseStudy[] = [
     stackSummary: "Next.js 16 · TypeScript · PostgreSQL · TimescaleDB patterns · Anthropic Claude · Data Workers · D3.js"
   },
   {
-    slug: "legal-case-management",
+    slug: "legal",
     title: "AI-Powered Legal Practice",
     shortTitle: "Legal Case Management",
     client: "Silverstone Legal",
