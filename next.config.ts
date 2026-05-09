@@ -3,7 +3,6 @@ import path from "node:path";
 
 const nextConfig: NextConfig = {
   output: "standalone",
-  trailingSlash: true,
   images: {
     unoptimized: true,
   },

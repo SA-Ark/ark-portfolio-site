@@ -85,7 +85,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1200px] px-5 py-20 md:py-28 lg:px-8">
+      <section id="services" className="mx-auto max-w-[1200px] px-5 py-20 md:py-28 lg:px-8">
         <SectionHeader
           eyebrow="Services"
           title="Five ways to turn software ambiguity into shipped systems"
