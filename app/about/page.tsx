@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Github, GraduationCap, Linkedin, ShieldCheck, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { GitHubActivity } from "@/components/github-activity";
 import { Reveal } from "@/components/reveal";
 import { Pill, SectionHeader } from "@/components/ui";
 
@@ -91,6 +92,12 @@ export default function AboutPage() {
             </Link>
           </div>
         </Reveal>
+      </section>
+
+      <section className="pt-20 md:pt-28">
+        <div className="mx-auto max-w-3xl">
+          <GitHubActivity />
+        </div>
       </section>
 
       <section className="py-20 md:py-28">

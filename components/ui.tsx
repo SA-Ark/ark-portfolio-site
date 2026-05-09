@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { MagneticLink } from "@/components/magnetic-link";
 
 export function SectionHeader({ eyebrow, title, description }: { eyebrow?: string; title: string; description?: string }) {
   return (
@@ -21,22 +22,26 @@ export function Pill({ children, className = "" }: { children: ReactNode; classN
 
 export function PrimaryLink({ href, children }: { href: string; children: ReactNode }) {
   return (
-    <Link
+    <MagneticLink
       href={href}
-      className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 px-8 py-4 text-lg font-bold text-white shadow-2xl shadow-cyan-500/30 transition hover:-translate-y-1 hover:shadow-cyan-400/40 hover:brightness-110"
+      className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 px-8 py-4 text-lg font-bold text-white shadow-2xl shadow-cyan-500/30 transition hover:shadow-cyan-400/40 hover:brightness-110"
     >
       {children}
-    </Link>
+    </MagneticLink>
   );
 }
 
 export function OutlineLink({ href, children }: { href: string; children: ReactNode }) {
   return (
-    <Link
+    <MagneticLink
       href={href}
-      className="inline-flex items-center justify-center rounded-full border-2 border-white px-8 py-4 text-lg font-bold text-white transition hover:-translate-y-1 hover:bg-white hover:text-[#050510]"
+      className="inline-flex items-center justify-center rounded-full border-2 border-white px-8 py-4 text-lg font-bold text-white transition hover:bg-white hover:text-[#050510]"
     >
       {children}
-    </Link>
+    </MagneticLink>
   );
+}
+
+export function TextLink({ href, children, className = "" }: { href: string; children: ReactNode; className?: string }) {
+  return <Link href={href} className={className}>{children}</Link>;
 }

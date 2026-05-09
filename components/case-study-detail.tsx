@@ -17,6 +17,18 @@ const stagger = {
   show: { transition: { staggerChildren: 0.09 } },
 };
 
+const sectionLinks = [
+  ["metrics", "Key Metrics"],
+  ["challenge", "The Challenge"],
+  ["decisions", "Technology Decisions"],
+  ["process", "Build Process"],
+  ["solutions", "Challenges & Solutions"],
+  ["ai", "AI Deep Dive"],
+  ["results", "Results"],
+  ["architecture", "Architecture"],
+  ["stack", "Tech Stack"],
+] as const;
+
 const atsNarrative =
   "This production engagement blended Python service patterns with TypeScript, React, and Next.js delivery, using SQL and PostgreSQL as the system of record while AI Integration stayed grounded in observable business workflows. The architecture considered LLM behavior, RAG retrieval, LangChain and LangGraph-style orchestration, PyTorch-compatible Machine Learning and NLP evaluation methods, OpenAI API and Anthropic API model routing, Vector Databases with pgvector Embeddings, Prompt Engineering, Function Calling, and Guardrails/AI Safety so AI Agents could assist users without becoming an unreviewed black box. Where appropriate, FastAPI, Rust services, Docker, Kubernetes, AWS deployment patterns, MLOps, CI/CD, Monitoring, Cost Optimization, Fine-Tuning (LoRA/PEFT), MCP integrations, Multi-Agent Orchestration, AI Evaluation/Evals, OWASP review, code remediation, application modernization, production hardening, technical debt reduction, and vibe coding rescue practices were used to convert fragile prototypes into reliable Production Systems.";
 
@@ -211,25 +223,34 @@ function ResultsTable({ study }: { study: CaseStudy }) {
 }
 
 function ArchitectureDiagram() {
-  const nodes = ["Frontend", "API", "Database", "AI", "External Services"];
+  const nodes = [
+    { label: "Frontend", color: "#00d4ff", sub: "Next.js UI" },
+    { label: "API", color: "#7c3aed", sub: "Routes + auth" },
+    { label: "Database", color: "#22c55e", sub: "PostgreSQL" },
+    { label: "AI", color: "#ec4899", sub: "RAG + agents" },
+    { label: "External", color: "#f59e0b", sub: "SaaS APIs" },
+  ];
   return (
     <motion.div variants={fadeUp} className="rounded-[2rem] border border-white/10 bg-black/45 p-6">
-      <svg viewBox="0 0 1000 280" role="img" aria-label="Architecture diagram showing frontend, API, database, AI, and external services" className="h-auto w-full overflow-visible">
+      <svg viewBox="0 0 1000 300" role="img" aria-label="Architecture diagram showing frontend, API, database, AI, and external services" className="h-auto w-full overflow-visible">
         <defs>
           <linearGradient id="flow" x1="0" x2="1">
-            <stop offset="0%" stopColor="#3b82f6" />
-            <stop offset="100%" stopColor="#8b5cf6" />
+            <stop offset="0%" stopColor="#00d4ff" />
+            <stop offset="50%" stopColor="#7c3aed" />
+            <stop offset="100%" stopColor="#ec4899" />
           </linearGradient>
           <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b5cf6" />
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#00d4ff" />
           </marker>
         </defs>
         {nodes.map((node, index) => {
           const x = 40 + index * 190;
           return (
-            <g key={node}>
-              <rect x={x} y="95" width="150" height="90" rx="22" fill="rgba(255,255,255,0.055)" stroke="rgba(255,255,255,0.16)" />
-              <text x={x + 75} y="146" textAnchor="middle" fill="#fafafa" className="text-base font-semibold">{node}</text>
+            <g key={node.label}>
+              <rect x={x} y="92" width="150" height="108" rx="22" fill="rgba(255,255,255,0.055)" stroke={node.color} strokeOpacity="0.72" strokeWidth="2" />
+              <circle cx={x + 75} cy="118" r="8" fill={node.color} opacity="0.9" />
+              <text x={x + 75} y="152" textAnchor="middle" fill="#fafafa" className="text-base font-semibold">{node.label}</text>
+              <text x={x + 75} y="176" textAnchor="middle" fill="rgba(255,255,255,0.58)" className="text-sm">{node.sub}</text>
             </g>
           );
         })}
@@ -239,13 +260,14 @@ function ArchitectureDiagram() {
           return (
             <motion.path
               key={index}
-              d={`M ${x1} 140 C ${x1 + 12} 116, ${x2 - 12} 116, ${x2} 140`}
+              d={`M ${x1} 146 C ${x1 + 14} 122, ${x2 - 14} 122, ${x2} 146`}
               fill="none"
               stroke="url(#flow)"
               strokeWidth="4"
               strokeLinecap="round"
               strokeDasharray="10 12"
               markerEnd="url(#arrow)"
+              className="architecture-arrow"
               initial={{ pathLength: 0, opacity: 0 }}
               whileInView={{ pathLength: 1, opacity: 1 }}
               viewport={{ once: true }}
@@ -258,7 +280,91 @@ function ArchitectureDiagram() {
   );
 }
 
+function EcommerceSplitComparison({ study }: { study: CaseStudy }) {
+  if (study.slug !== "ecommerce") return null;
+  const rows = [
+    { label: "Lighthouse", before: "32", after: "98", beforePct: 32, afterPct: 98 },
+    { label: "Search conversion", before: "Baseline", after: "+35%", beforePct: 42, afterPct: 82 },
+    { label: "Support tickets", before: "High", after: "-60%", beforePct: 86, afterPct: 34 },
+    { label: "Product load", before: "8.2s", after: "1.1s", beforePct: 88, afterPct: 18 },
+  ];
+
+  return (
+    <motion.div variants={fadeUp} className="mb-8 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04]">
+      <div className="relative grid gap-px bg-white/10 md:grid-cols-2">
+        <div className="bg-red-500/[0.08] p-6 md:p-8">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-red-300">Before</p>
+          <h3 className="mt-3 text-3xl font-bold text-white">Slow, fragile storefront</h3>
+          <div className="mt-6 space-y-5">
+            {rows.map((row, index) => (
+              <div key={row.label}>
+                <div className="mb-2 flex items-center justify-between text-base"><span className="text-zinc-300">{row.label}</span><span className="font-bold text-red-200">{row.before}</span></div>
+                <div className="h-2 overflow-hidden rounded-full bg-black/35">
+                  <motion.div className="h-full rounded-full bg-red-400/80" initial={{ width: 0 }} whileInView={{ width: `${row.beforePct}%` }} viewport={{ once: true }} transition={{ duration: 0.9, delay: index * 0.07 }} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <motion.div aria-hidden="true" className="absolute bottom-0 left-1/2 top-0 hidden w-1 -translate-x-1/2 bg-gradient-to-b from-cyan-300 via-white to-violet-400 shadow-[0_0_30px_rgba(0,212,255,0.55)] md:block" initial={{ scaleY: 0 }} whileInView={{ scaleY: 1 }} viewport={{ once: true }} transition={{ duration: 1.1, ease: "easeOut" }} />
+        <div className="bg-emerald-500/[0.08] p-6 md:p-8">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">After</p>
+          <h3 className="mt-3 text-3xl font-bold text-white">Fast, AI-assisted revenue path</h3>
+          <div className="mt-6 space-y-5">
+            {rows.map((row, index) => (
+              <div key={row.label}>
+                <div className="mb-2 flex items-center justify-between text-base"><span className="text-zinc-300">{row.label}</span><span className="font-bold text-emerald-200">{row.after}</span></div>
+                <div className="h-2 overflow-hidden rounded-full bg-black/35">
+                  <motion.div className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-cyan-300" initial={{ width: 0 }} whileInView={{ width: `${row.afterPct}%` }} viewport={{ once: true }} transition={{ duration: 0.9, delay: index * 0.07 + 0.1 }} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+
+function readingTimeForStudy(study: CaseStudy) {
+  const text = [
+    study.title,
+    study.description,
+    ...study.challenge,
+    ...study.decisions.flatMap((item) => [item.decision, item.choice, item.alternatives, item.why]),
+    ...study.phases.flatMap((item) => [item.title, item.description]),
+    ...study.challenges.flatMap((item) => [item.problem, item.impact, item.solution, item.result]),
+    ...study.aiFeatures.flatMap((item) => [item.feature, item.business, item.architecture, item.evaluation, item.impact]),
+    ...study.results.flatMap((item) => [item.metric, item.before, item.after]),
+    study.architecture,
+    study.stackSummary,
+  ].join(" ");
+  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 200));
+}
+
 export function CaseStudyDetail({ study }: { study: CaseStudy }) {
+  const [activeSection, setActiveSection] = useState<string>(sectionLinks[0][0]);
+  const readingTime = useMemo(() => readingTimeForStudy(study), [study]);
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+    sectionLinks.forEach(([id]) => {
+      const element = document.getElementById(id);
+      if (!element) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id);
+        },
+        { rootMargin: "-10% 0px -55% 0px", threshold: [0, 0.2, 0.6] },
+      );
+      observer.observe(element);
+      observers.push(observer);
+    });
+    return () => observers.forEach((observer) => observer.disconnect());
+  }, []);
+
   const stack = useMemo(() => {
     const ats = [
       "Python", "LLM", "RAG", "LangChain", "PyTorch", "OpenAI API", "Anthropic API", "Vector Databases", "Prompt Engineering", "FastAPI", "Docker", "Kubernetes", "AWS", "Machine Learning", "NLP", "SQL", "TypeScript", "React", "Next.js", "PostgreSQL", "MLOps", "CI/CD", "Production Systems", "Monitoring", "AI Agents", "Agentic AI", "MCP", "Multi-Agent Orchestration", "Fine-Tuning (LoRA/PEFT)", "AI Integration", "Guardrails/AI Safety", "AI Evaluation/Evals", "Cost Optimization", "Rust", "pgvector", "LangGraph", "Embeddings", "Function Calling", "vibe coding rescue", "code remediation", "application modernization", "production hardening", "technical debt reduction", "OWASP"
@@ -286,6 +392,7 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
               <Pill>{study.industry}</Pill>
               <Pill>{study.timeline}</Pill>
               <Pill>{study.engagement}</Pill>
+              <Pill>{readingTime} min read</Pill>
             </div>
             <h1 className="mt-7 max-w-5xl text-5xl font-bold leading-tight text-white md:text-7xl">{study.title}</h1>
             <p className="mt-6 max-w-3xl text-xl text-zinc-300">{study.description}</p>
@@ -297,20 +404,19 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
         <aside className="hidden lg:block">
           <div className="sticky top-28 rounded-3xl border border-white/10 bg-white/[0.04] p-5">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-500">Sections</p>
-            <nav className="mt-4 flex flex-col gap-3 text-base text-zinc-300">
-              {[
-                ["metrics", "Key Metrics"],
-                ["challenge", "The Challenge"],
-                ["decisions", "Technology Decisions"],
-                ["process", "Build Process"],
-                ["solutions", "Challenges & Solutions"],
-                ["ai", "AI Deep Dive"],
-                ["results", "Results"],
-                ["architecture", "Architecture"],
-                ["stack", "Tech Stack"],
-              ].map(([href, label]) => (
-                <a key={href} href={`#${href}`} className="hover:text-white">{label}</a>
-              ))}
+            <nav className="mt-4 flex flex-col gap-2 text-base text-zinc-300">
+              {sectionLinks.map(([href, label]) => {
+                const active = activeSection === href;
+                return (
+                  <a
+                    key={href}
+                    href={`#${href}`}
+                    className={`rounded-xl border-l-2 px-3 py-2 transition ${active ? "border-cyan-400 bg-white/[0.08] text-cyan-400" : "border-transparent hover:border-white/20 hover:bg-white/[0.04] hover:text-white"}`}
+                  >
+                    {label}
+                  </a>
+                );
+              })}
             </nav>
           </div>
         </aside>
@@ -378,6 +484,7 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
           </Section>
 
           <Section id="results" title="Results & Metrics">
+            <EcommerceSplitComparison study={study} />
             <ResultsTable study={study} />
           </Section>
 

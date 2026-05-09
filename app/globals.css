@@ -270,3 +270,16 @@ h6 {
     transform: translateX(-50%);
   }
 }
+
+.architecture-arrow {
+  animation: architecture-dash 1.8s linear infinite;
+}
+
+@keyframes architecture-dash {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -44;
+  }
+}

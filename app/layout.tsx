@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { AppChrome } from "@/components/app-chrome";
 import { CursorGlow } from "@/components/cursor-glow";
 import { Footer } from "@/components/footer";
 import { Nav } from "@/components/nav";
@@ -64,7 +65,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <div className="aurora-bg" aria-hidden="true" />
         <CursorGlow />
         <Nav />
-        <main className="page-shell min-h-screen pt-24">{children}</main>
+        <main className="min-h-screen pt-24">
+          <AppChrome>{children}</AppChrome>
+        </main>
         <Footer />
       </body>
     </html>
