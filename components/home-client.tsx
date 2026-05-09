@@ -126,29 +126,17 @@ function CodeSnippet() {
 }
 
 function CaseStudyMockup({ slug }: { slug: string }) {
-  const urls: Record<string, string> = {
-    ecommerce: "https://ecommerce.chakrakali.com",
-    portal: "https://portal.chakrakali.com",
-    learn: "https://learn.chakrakali.com",
-    calendar: "https://calendar.chakrakali.com",
-    markets: "https://markets.chakrakali.com",
-    legal: "https://legal.chakrakali.com",
-  };
-  const url = urls[slug];
   return (
     <div className="relative h-52 overflow-hidden rounded-t-[20px] bg-[#0a0a1a]">
-      {url ? (
-        <iframe
-          src={url}
-          title={slug}
-          className="pointer-events-none absolute left-0 top-0 h-[900px] w-[1440px] origin-top-left scale-[0.25] border-0"
-          loading="lazy"
-          sandbox="allow-scripts allow-same-origin"
-        />
-      ) : (
-        <div className="flex h-full items-center justify-center text-zinc-600">Preview</div>
-      )}
-      <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#0f0f1a] to-transparent" />
+      <video
+        src={`/videos/${slug}.mp4`}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="h-full w-full object-cover object-top"
+      />
+      <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0f0f1a] to-transparent" />
     </div>
   );
 }
@@ -328,6 +316,72 @@ export function HomeClient() {
             </motion.div>
           ))}
         </motion.div>
+      </section>
+
+      {/* Animated tech showcase */}
+      <section className="relative overflow-hidden border-y border-white/10 py-20 md:py-28">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/[0.03] to-transparent" />
+        <div className="mx-auto max-w-[1200px] px-5 lg:px-8">
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-cyan-300">Built Different</p>
+            <h2 className="text-4xl font-bold text-white md:text-5xl">Systems that scale, not scripts that break</h2>
+            <p className="mx-auto mt-5 max-w-2xl text-lg text-[#8888a0]">
+              Every project ships with production monitoring, automated testing, CI/CD pipelines, and architecture documentation. No handoff surprises.
+            </p>
+          </motion.div>
+
+          <div className="mt-16 grid grid-cols-2 gap-4 md:grid-cols-4">
+            {[
+              { label: "Uptime SLA", value: "99.9%", icon: "🟢" },
+              { label: "Avg Deploy Time", value: "< 3 min", icon: "⚡" },
+              { label: "Test Coverage", value: "87%+", icon: "✅" },
+              { label: "Client Retention", value: "100%", icon: "🔒" },
+            ].map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.04] p-6 text-center backdrop-blur-xl transition hover:border-cyan-400/30 hover:bg-white/[0.07]"
+                initial={{ opacity: 0, y: 30, rotateX: 15 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                whileHover={{ scale: 1.05, y: -4 }}
+                style={{ transformStyle: "preserve-3d" as const }}
+              >
+                <div className="text-3xl">{stat.icon}</div>
+                <div className="mt-3 text-3xl font-bold text-white">{stat.value}</div>
+                <div className="mt-1 text-base text-zinc-400">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            className="mx-auto mt-16 flex max-w-3xl flex-wrap items-center justify-center gap-3"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            {["Next.js", "TypeScript", "Python", "Rust", "PostgreSQL", "Docker", "AWS", "Anthropic Claude", "LangChain", "pgvector", "Redis", "Kubernetes"].map((tech, i) => (
+              <motion.span
+                key={tech}
+                className="rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-sm font-semibold text-zinc-300 backdrop-blur-xl transition hover:border-cyan-400/40 hover:text-white"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.4 + i * 0.05 }}
+                whileHover={{ scale: 1.1, y: -2 }}
+              >
+                {tech}
+              </motion.span>
+            ))}
+          </motion.div>
+        </div>
       </section>
 
       <section className="mx-auto max-w-[1200px] px-5 pb-20 md:pb-28 lg:px-8">
