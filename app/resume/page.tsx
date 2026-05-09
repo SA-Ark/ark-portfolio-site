@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 };
 
 const variants = [
-  { title: "A: SaaS Builder", subtitle: "Full-stack product engineering, multi-tenant SaaS, payments, and production delivery.", href: "/resumes/ark-chakrabarti-saas-builder.pdf" },
-  { title: "B: AI Specialist", subtitle: "RAG systems, LLM integration, evaluation, red-teaming, and AI product quality.", href: "/resumes/ark-chakrabarti-ai-specialist.pdf" },
-  { title: "C: Modernization", subtitle: "Legacy rescue, performance hardening, security cleanup, and cloud migration.", href: "/resumes/ark-chakrabarti-modernization.pdf" },
-  { title: "D: AI Orchestrator", subtitle: "Multi-agent systems, model routing, cost optimization, monitoring, and evals.", href: "/resumes/ark-chakrabarti-ai-orchestrator.pdf" },
-  { title: "E: Code Cleanup", subtitle: "Vibe-coded MVP rescue, architecture repair, testing, observability, and maintainability.", href: "/resumes/ark-chakrabarti-code-cleanup.pdf" },
+  { title: "A: SaaS Builder", subtitle: "Full-stack product engineering, multi-tenant SaaS, payments, and production delivery.", href: "/resumes/Arko-Resume-SaaS-Builder.pdf" },
+  { title: "B: AI Specialist", subtitle: "RAG systems, LLM integration, evaluation, red-teaming, and AI product quality.", href: "/resumes/Arko-Resume-AI-Specialist.pdf" },
+  { title: "C: Modernization", subtitle: "Legacy rescue, performance hardening, security cleanup, and cloud migration.", href: "/resumes/Arko-Resume-Modernization.pdf" },
+  { title: "D: AI Orchestrator", subtitle: "Multi-agent systems, model routing, cost optimization, monitoring, and evals.", href: "/resumes/Arko-Resume-AI-Orchestrator.pdf" },
+  { title: "E: Code Cleanup", subtitle: "Vibe-coded MVP rescue, architecture repair, testing, observability, and maintainability.", href: "/resumes/Arko-Resume-Code-Cleanup.pdf" },
 ];
 
 export default function ResumePage() {
