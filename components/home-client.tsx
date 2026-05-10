@@ -1,9 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, Bot, Boxes, Building2, Cpu, Hammer, Rocket, SearchCheck, Star, Workflow, Zap } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight, Bot, Boxes, Building2, Cpu, Expand, Hammer, Rocket, SearchCheck, Star, Workflow, X, Zap } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useCallback, useEffect, useState } from "react";
 import { ParticleHero } from "@/components/particle-hero";
 import { OutlineLink, Pill, PrimaryLink, SectionHeader } from "@/components/ui";
 import { caseStudies } from "@/lib/case-studies";
@@ -160,25 +161,94 @@ function CodeSnippet() {
   );
 }
 
-function CaseStudyMockup({ slug }: { slug: string }) {
+function CaseStudyMockup({ slug, onClick }: { slug: string; onClick: () => void }) {
   return (
-    <div className="relative w-full overflow-hidden rounded-t-[20px] bg-[#0a0a1a]" style={{ aspectRatio: "16/10.5" }}>
+    <button type="button" onClick={onClick} className="group/vid relative w-full cursor-pointer overflow-hidden rounded-t-[20px] bg-[#0a0a1a]" style={{ aspectRatio: "16/10.5" }}>
       <video
         src={`/videos/${slug}.mp4`}
         autoPlay
         muted
         loop
         playsInline
-        className="h-full w-full object-cover object-top"
+        className="h-full w-full object-cover object-top transition duration-300 group-hover/vid:scale-[1.02] group-hover/vid:brightness-110"
       />
+      <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition duration-300 group-hover/vid:bg-black/30">
+        <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/20 opacity-0 backdrop-blur-md transition duration-300 group-hover/vid:opacity-100">
+          <Expand className="h-6 w-6 text-white" />
+        </div>
+      </div>
       <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0f0f1a] to-transparent" />
-    </div>
+    </button>
+  );
+}
+
+function VideoModal({ slug, title, onClose }: { slug: string; title: string; onClose: () => void }) {
+  const handleKey = useCallback((e: KeyboardEvent) => {
+    if (e.key === "Escape") onClose();
+  }, [onClose]);
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", handleKey);
+      document.body.style.overflow = "";
+    };
+  }, [handleKey]);
+
+  return (
+    <motion.div
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-8"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+    >
+      <div className="absolute inset-0 bg-black/85 backdrop-blur-sm" onClick={onClose} />
+      <motion.div
+        className="relative z-10 w-full max-w-6xl"
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        transition={{ type: "spring", stiffness: 200, damping: 25 }}
+      >
+        <div className="mb-4 flex items-center justify-between">
+          <h3 className="text-lg font-bold text-white md:text-xl">{title}</h3>
+          <button type="button" onClick={onClose} className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20">
+            <X className="h-5 w-5" />
+          </button>
+        </div>
+        <div className="overflow-hidden rounded-2xl border border-white/15 bg-black shadow-2xl shadow-black/50">
+          <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.04] px-4 py-3">
+            <span className="h-3 w-3 rounded-full bg-red-400" />
+            <span className="h-3 w-3 rounded-full bg-yellow-300" />
+            <span className="h-3 w-3 rounded-full bg-green-400" />
+          </div>
+          <video
+            src={`/videos/${slug}.mp4`}
+            autoPlay
+            muted
+            loop
+            playsInline
+            controls
+            className="aspect-video w-full"
+          />
+        </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
 export function HomeClient() {
+  const [activeVideo, setActiveVideo] = useState<{ slug: string; title: string } | null>(null);
+
   return (
     <>
+      <AnimatePresence>
+        {activeVideo && (
+          <VideoModal slug={activeVideo.slug} title={activeVideo.title} onClose={() => setActiveVideo(null)} />
+        )}
+      </AnimatePresence>
       <section className="mesh-bg relative -mt-24 overflow-hidden pt-24">
         <ParticleHero />
         <Scene />
@@ -301,7 +371,7 @@ export function HomeClient() {
                     <span className="h-3 w-3 rounded-full bg-red-400" /><span className="h-3 w-3 rounded-full bg-yellow-300" /><span className="h-3 w-3 rounded-full bg-green-400" />
                     <span className="ml-auto rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white">{study.industry}</span>
                   </div>
-                  <CaseStudyMockup slug={study.slug} />
+                  <CaseStudyMockup slug={study.slug} onClick={() => setActiveVideo({ slug: study.slug, title: study.title })} />
                 </div>
               </div>
               <div className="p-6 md:p-8">
