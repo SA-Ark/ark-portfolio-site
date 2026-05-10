@@ -113,13 +113,13 @@ h6 {
 
 .gradient-text,
 .shimmer-text {
-  background: linear-gradient(90deg, #7c3aed 0%, #00d4ff 25%, #7c3aed 50%, #ec4899 75%, #7c3aed 100%);
+  background: linear-gradient(90deg, #e0e0ff 0%, #00d4ff 50%, #e0e0ff 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  animation: shimmer 3s linear infinite;
+  animation: shimmer 8s ease-in-out infinite;
 }
 
 .glass-card {
