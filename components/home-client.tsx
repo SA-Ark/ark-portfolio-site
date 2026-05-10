@@ -47,15 +47,15 @@ const processSteps = [
 ];
 
 const testimonials = [
-  { client: "NovaBridge Technologies", role: "CTO", quote: "Arko reduced our admin overhead by 60%. The AI health scoring caught 3 at-risk clients we would have lost." },
-  { client: "Online Retailer", role: "Founder", quote: "We went from Lighthouse 32 to 98. Our conversion rate jumped 35% after the AI search integration." },
-  { client: "Beacon Learning", role: "VP Product", quote: "The adaptive engine improved test scores by 40%. Our students are studying 3x longer with the AI tutor." },
-  { client: "Meridian Consulting", role: "Managing Partner", quote: "We reclaimed 3 hours per day per partner. The daily brief alone is worth the entire engagement." },
-  { client: "Vaulted Financial", role: "Head of Research", quote: "Research that took 4 hours now takes 30 seconds. The signal engine backtested at 67% accuracy." },
-  { client: "Silverstone Legal", role: "Senior Partner", quote: "Contract review went from 3 hours to 10 minutes. We haven't missed a deadline since." },
+  { client: "AI Games Academy", role: "Founder", quote: "Built an AI-first coding curriculum from scratch. Kids are building real Minecraft mods and Roblox games using AI in their first session." },
+  { client: "Ark Mail", role: "Self-Hosted", quote: "Replaced Mailgun with a Rust-built email service. SPF, DKIM, warmup scheduling, AI reply classification — zero vendor lock-in." },
+  { client: "Ark Search", role: "40 Sources", quote: "One query searches SEC EDGAR, Semantic Scholar, Congress records, and 37 more sources simultaneously. Research that took hours now takes seconds." },
+  { client: "Ark Memory", role: "61K Memories", quote: "Every decision, lesson, and architecture choice is semantically searchable. The knowledge graph shows connections I never noticed." },
+  { client: "Ark Clipper", role: "Video AI", quote: "Feed it a 2-hour video, get viral clips in seconds. AI virality scoring, auto-captions, platform-optimized exports for TikTok, Shorts, and Reels." },
+  { client: "Muhurta Clock", role: "Vedic Science", quote: "Real astronomical calculations for every muhurta — not static tables. Accurate sunrise/sunset for any location on Earth, updating in real time." },
 ];
 
-const metrics = ["6+ Production Apps Deployed", "50K+ Documents Processed", "94% RAG Accuracy", "40% LLM Cost Reduction"];
+const metrics = ["8 Production Systems", "61K+ Memories Indexed", "40 Search Sources", "4 LLM Proxy Instances"];
 
 const techIconMap: Record<string, string> = {
   "Next.js": "N",
@@ -347,8 +347,8 @@ export function HomeClient() {
       <section id="case-studies" className="mx-auto max-w-[1200px] px-5 py-20 md:py-28 lg:px-8">
         <SectionHeader
           eyebrow="Case Studies"
-          title="Six production apps. Six business outcomes."
-          description="Each demo represents a realistic consulting engagement: measurable ROI, hardened architecture, and AI features that earn their place."
+          title="Eight production systems. All real. All mine."
+          description="Every project is something I built for myself, my business, or my users. No demos — real tools I use every day."
         />
         <motion.div
           className="grid gap-6 lg:grid-cols-2"
@@ -406,7 +406,7 @@ export function HomeClient() {
       </section>
 
       <section id="testimonials" className="mx-auto max-w-[1200px] px-5 pb-20 md:pb-28 lg:px-8">
-        <SectionHeader eyebrow="Testimonials" title="Client words from finished systems" description="Fictionalized testimonials from the portfolio case-study clients, focused on measurable outcomes." />
+        <SectionHeader eyebrow="What I Built" title="Real tools, real results" description="Each project solves a problem I actually have. No throwaway demos." />
         <motion.div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3" initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }} variants={staggerFast}>
           {testimonials.map((item) => (
             <motion.div key={item.client} variants={blurIn} transition={{ duration: 0.6 }} className="glass-card gradient-border h-full p-6">
