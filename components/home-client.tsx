@@ -162,16 +162,24 @@ function CodeSnippet() {
 }
 
 function CaseStudyMockup({ slug, onClick }: { slug: string; onClick: () => void }) {
+  const [videoError, setVideoError] = useState(false);
   return (
     <button type="button" onClick={onClick} className="group/vid relative w-full cursor-pointer overflow-hidden rounded-t-[20px] bg-[#0a0a1a]" style={{ aspectRatio: "16/10.5" }}>
-      <video
-        src={`/videos/${slug}.mp4`}
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="h-full w-full object-cover object-top transition duration-300 group-hover/vid:scale-[1.02] group-hover/vid:brightness-110"
-      />
+      {videoError ? (
+        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#0d0d2b] to-[#0a0a1a]">
+          <span className="text-sm font-semibold text-zinc-500">Preview unavailable</span>
+        </div>
+      ) : (
+        <video
+          src={`/videos/${slug}.mp4`}
+          autoPlay
+          muted
+          loop
+          playsInline
+          onError={() => setVideoError(true)}
+          className="h-full w-full object-cover object-top transition duration-300 group-hover/vid:scale-[1.02] group-hover/vid:brightness-110"
+        />
+      )}
       <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition duration-300 group-hover/vid:bg-black/30">
         <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/20 opacity-0 backdrop-blur-md transition duration-300 group-hover/vid:opacity-100">
           <Expand className="h-6 w-6 text-white" />
@@ -183,6 +191,7 @@ function CaseStudyMockup({ slug, onClick }: { slug: string; onClick: () => void 
 }
 
 function VideoModal({ slug, title, onClose }: { slug: string; title: string; onClose: () => void }) {
+  const [videoError, setVideoError] = useState(false);
   const handleKey = useCallback((e: KeyboardEvent) => {
     if (e.key === "Escape") onClose();
   }, [onClose]);
@@ -231,8 +240,14 @@ function VideoModal({ slug, title, onClose }: { slug: string; title: string; onC
             loop
             playsInline
             controls
-            className="aspect-video w-full"
+            onError={() => setVideoError(true)}
+            className={`aspect-video w-full${videoError ? " hidden" : ""}`}
           />
+          {videoError && (
+            <div className="flex aspect-video w-full items-center justify-center bg-[#0a0a1a]">
+              <span className="text-sm font-semibold text-zinc-500">Video unavailable</span>
+            </div>
+          )}
         </div>
       </motion.div>
     </motion.div>
